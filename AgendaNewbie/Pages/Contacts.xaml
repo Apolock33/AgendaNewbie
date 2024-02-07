@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaNewbie.Pages.Contacts"
+            NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="Black"
+            SelectedTabColor="White"
+            UnselectedTabColor="LightGray">
+
+    <ContentPage Title="Contatos">
+        <StackLayout>
+
+            <SearchBar x:Name="SBBuscar" Placeholder="Digite o nome do contato..." Margin="10" BackgroundColor="White" TextChanged="SBBuscar_TextChanged"/>
+
+            <CollectionView x:Name="CVLista" ItemsSource="{Binding ContactsEntity}" 
+                            SelectionMode="Single" SelectionChanged="CVLista_SelectionChanged" HorizontalOptions="CenterAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItem x:Name="SVApagar" Text="Apagar" BackgroundColor="Red" Invoked="SVApagar_Invoked"/>
+                            </SwipeView.LeftItems>
+                            <StackLayout Padding="5">
+                                <Frame BackgroundColor="White" BorderColor="Black" HasShadow="False" CornerRadius="5">
+                                    <Label Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                </Frame>
+                            </StackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Detalhes">
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Contatos" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Padding="0, 20" />
+                <Frame BorderColor="Black" CornerRadius="20" BackgroundColor="Transparent">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Nome:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="0" Grid.Column="0" />
+                        <Label x:Name="LBLNome" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" />
+                        
+                        <Label Text="Tel 1:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="1" Grid.Column="0" />
+                        <Label x:Name="LBLTel1" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
+                        
+                        <Label Text="Tel 2:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="2" Grid.Column="0" />
+                        <Label x:Name="LBLTel2" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" />
+                        
+                        <Label Text="E-mail:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="3" Grid.Column="0" />
+                        <Label x:Name="LBLEmail" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="Endereco" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="4" HorizontalOptions="Center" Grid.Column="0" />
+
+                        <Label Text="Cep:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="6" Grid.Column="0" />
+                        <Label x:Name="LBLCep" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="Endereço:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="7" Grid.Column="0" />
+                        <Label x:Name="LBLEndereco" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="Número:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="8" Grid.Column="0" />
+                        <Label x:Name="LBLNumero" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="Compl.:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="8" Grid.Column="2" />
+                        <Label x:Name="LBLComplemento" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="3" />
+
+                        <Label Text="Bairro:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="10" Grid.Column="0" />
+                        <Label x:Name="LBLBairro" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="Cidade:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="11" Grid.Column="0" />
+                        <Label x:Name="LBLcidade" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" />
+
+                        <Label Text="UF:" TextColor="Black" FontAttributes="Bold" FontSize="Body" Grid.Row="12" Grid.Column="0" />
+                        <Label x:Name="LBLUF" Text=" - " TextColor="Black" FontSize="Body" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <ContentPage Title="Cadastrar">
+        <ScrollView>
+            <Grid>
+                <StackLayout VerticalOptions="Start" Padding="30">
+                    <Label Text="Cadastrar"
+                       FontSize="Title" TextColor="Black"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                    <Frame BorderColor="Black" CornerRadius="10"
+                       Margin="0,20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" 
+                            Text="Nome: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTNome" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="1" Grid.Column="0" 
+                            Text="Telefone 1 " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTTel1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" 
+                            Text="Telefone 2 " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTTel2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" 
+                            Text="E-mail: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTEmail" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
+                            Text="Endereço " TextColor="Black" FontAttributes="Italic"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+
+                            <Label Grid.Row="5" Grid.Column="0" 
+                            Text="CEP: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTCep" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                               Unfocused="TXTCep_Unfocused"/>
+
+                            <Label Grid.Row="6" Grid.Column="0" 
+                            Text="Logradouro: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTLogradouro" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="7" Grid.Column="0" 
+                            Text="Nº: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTNumero" Grid.Row="7" Grid.Column="1" />
+                            <Label Grid.Row="7" Grid.Column="2" 
+                            Text="Compl.: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTComplemento" Grid.Row="7" Grid.Column="3" />
+
+                            <Label Grid.Row="8" Grid.Column="0" 
+                            Text="Bairro: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTBairro" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="9" Grid.Column="0" 
+                            Text="Cidade: " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTCidade" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="10" Grid.Column="0" 
+                            Text="UF " TextColor="Black" FontAttributes="Bold"
+                               HorizontalOptions="Start" VerticalOptions="Center" />
+                            <Entry x:Name="TXTUF" Grid.Row="10" Grid.Column="1" />
+
+                        </Grid>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Button x:Name="BTNLimpar" Text="Limpar"
+                        BackgroundColor="Transparent" TextColor="Red"
+                        HorizontalOptions="CenterAndExpand" CornerRadius="20"
+                        Clicked="BTNLimpar_Clicked"
+                        />
+                        <Button x:Name="BTNSalvar" Text="Salvar"
+                        BackgroundColor="Black" TextColor="White"
+                        HorizontalOptions="CenterAndExpand" CornerRadius="20"
+                        Clicked="BTNSalvar_Clicked"
+                        />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+
+</TabbedPage>
